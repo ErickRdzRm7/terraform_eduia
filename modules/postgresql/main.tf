@@ -1,3 +1,4 @@
+data "azurerm_subscription" "primary" {}
 resource "azurerm_postgresql_flexible_server" "pg_server" {
   name                   = var.pg_server_name
   resource_group_name    = var.resource_group_name
@@ -44,9 +45,26 @@ resource "azurerm_private_dns_zone" "pg_private_dns_zone" {
   resource_group_name = var.resource_group_name
 }
 
+resource "azurerm_role_definition" "custom_pg_user_role" {
+  name        = "CustomPostgreSQLUserRole"
+  scope = var.subscription_id
+  description = "Permisos para usuarios de PostgreSQL flexible server"
+
+  permissions {
+    actions = [
+      "Microsoft.DBforPostgreSQL/servers/databases/read",
+      "Microsoft.DBforPostgreSQL/servers/read"
+    ]
+    not_actions = []
+  }
+
+  assignable_scopes = [
+    data.azurerm_subscription.primary.id
+  ]
+}
 
 resource "azurerm_role_assignment" "pg_user_role_assignment" {
-  scope                = azurerm_postgresql_flexible_server.pg_server.id
-  role_definition_name = "Azure Database for PostgreSQL User"
-  principal_id         = var.principal_id
+  scope              = azurerm_postgresql_flexible_server.pg_server.id
+  role_definition_id = azurerm_role_definition.custom_pg_user_role.id
+  principal_id       = var.principal_id
 }

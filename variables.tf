@@ -1,7 +1,7 @@
 variable "location" {
   description = "La región de Azure para los recursos."
   type        = string
-  default     = "centralus"
+  default     = "westeurope"
 }
 
 variable "app_name" {

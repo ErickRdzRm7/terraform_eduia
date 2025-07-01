@@ -12,7 +12,7 @@ variable "location" {
 
 variable "sku" {
   type    = string
-  default = "Premium"
+  default = "Basic" 
 }
 
 variable "subnet_id" {

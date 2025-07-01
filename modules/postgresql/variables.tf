@@ -81,7 +81,15 @@ variable "pg_backup_retention_days" {
   default     = 7
 }
 
+variable "subscription_id" {
+  description = "Azure Subscription ID"
+  type        = string
+  default     = "beec2163-27fb-4d8b-bf2d-36aecc895eb3"  # tu id real
+}
+
+
 variable "tags" {
   description = "Etiquetas comunes para los recursos."
   type        = map(string)
 }
+
