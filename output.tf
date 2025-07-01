@@ -18,13 +18,13 @@ output "pg_database_name" {
   value = module.postgresql.pg_database_name
 }
 
-output "cosmos_db_account_name" {
-  value = module.cosmosdb.cosmos_db_account_name
-}
+//output "cosmos_db_account_name" {
+  //value = module.cosmosdb.cosmos_db_account_name
+//}
 
-output "mongo_database_name" {
-  value = module.cosmosdb.mongo_database_name
-}
+//output "mongo_database_name" {
+  //value = module.cosmosdb.mongo_database_name
+//}
 
 output "app_service_principal_id" {
   value = module.app_service.app_service_principal_id

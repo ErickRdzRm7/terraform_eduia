@@ -20,7 +20,7 @@ variable "cosmos_private_dns_zone_name" {
 
 variable "mongo_database_name" {
   type    = string
-  default = "topicsdb"
+  default = "eduiadb"
 }
 
 variable "mongo_collection_name" {

@@ -1,3 +1,8 @@
+  resource "azurerm_resource_group" "rg" {
+  name     = "rg-${var.app_name}"
+  location = var.location
+}
+
 resource "azurerm_virtual_network" "vnet" {
   name                = "${var.app_name}-vnet"
   address_space       = ["10.0.0.0/16"]
@@ -6,6 +11,8 @@ resource "azurerm_virtual_network" "vnet" {
     tags = var.tags
 
   }
+
+
 
 resource "azurerm_subnet" "app_service_pe_subnet" {
   name                 = "${var.app_name}-appservice-pe-subnet"

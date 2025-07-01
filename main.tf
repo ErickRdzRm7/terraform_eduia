@@ -63,21 +63,21 @@ module "postgresql" {
 }
 
 
-module "cosmosdb" {
-  source = "./modules/cosmosdb"
+//module "cosmosdb" {
+  //source = "./modules/cosmosdb"
 
-  cosmos_account_name        = "${var.app_name}cosmosdb"
-  resource_group_name        = module.network.resource_group_name
-  location                   = var.location
-  subnet_id                 = module.network.app_service_subnet_id
-  cosmos_private_dns_zone_name = "privatelink.mongo.cosmos.azure.com"
-  principal_id               = module.app_service.app_service_principal_id
+  //cosmos_account_name        = "${var.app_name}bd"
+ // resource_group_name        = module.network.resource_group_name
+  //location                   = var.location
+  //subnet_id                 = module.network.app_service_subnet_id
+  //cosmos_private_dns_zone_name = "privatelink.mongo.cosmos.azure.com"
+  //principal_id               = module.app_service.app_service_principal_id
 
-  tags = {
-    Environment = var.environment_type
-    Application = var.app_name
-  }
-}
+//  tags = {
+  //  Environment = var.environment_type
+   // Application = var.app_name
+  //}
+//}
 
 module "app_service" {
   source = "./modules/app_service"
@@ -99,8 +99,8 @@ module "app_service" {
     "GEMINI_API_KEY"                         = var.gemini_api_key
     "DATABASE_HOST_PG"                       = module.postgresql.pg_server_fqdn
     "DATABASE_NAME_PG"                       = module.postgresql.pg_database_name
-    "DATABASE_HOST_COSMOS"                   = module.cosmosdb.cosmos_db_account_name
-    "DATABASE_NAME_COSMOS"                   = module.cosmosdb.mongo_database_name
+   // "DATABASE_HOST_COSMOS"                   = module.cosmosdb.cosmos_db_account_name
+   // "DATABASE_NAME_COSMOS"                   = module.cosmosdb.mongo_database_name
     # Agrega aquí otras variables de entorno necesarias
   }
 
