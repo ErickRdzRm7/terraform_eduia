@@ -1,7 +1,41 @@
+# Terraform directories and files
 .terraform/
 *.tfstate
 *.tfstate.backup
-crash.log
 *.tfvars
 *.tfvars.json
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
 .terraform.lock.hcl
+
+# Sensitive files
+*.pem
+*.key
+*.crt
+*.pfx
+*.env
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
+
+# OS-specific files
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# Backup files
+*.bak
+*.tmp
